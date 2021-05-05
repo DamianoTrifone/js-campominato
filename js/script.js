@@ -11,3 +11,18 @@
 // con difficoltà 1 => tra 1 e 80
 // con difficoltà 2 => tra 1 e 50
 
+// FUNZIONI COMUNI
+function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  function isInArray(element, array){
+      for(var i = 0; i < array.length; i++){
+      check == false
+      if(element == array [i]){
+        return !check;
+      }
+  }
+  return check;
+}
+// /FUNZIONI COMUNI
