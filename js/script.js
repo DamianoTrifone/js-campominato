@@ -26,3 +26,12 @@ function getRandomArbitrary(min, max) {
   return check;
 }
 // /FUNZIONI COMUNI
+
+// VARIABILI
+var bombe = []; //Array che contiene i numeri corrispondenti alle bombe
+
+var tentativi = []; //Array che contiene i tentativi effettuati dall'utente
+
+var tentativiMassimi = 84; //Numero massimo di tentativi effettuabili dall'utente
+// /FINE VARIABILI
+
