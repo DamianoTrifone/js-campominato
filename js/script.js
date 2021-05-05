@@ -31,7 +31,7 @@ var bombe = []; //Array che contiene i numeri corrispondenti alle bombe
 
 var tentativi = []; //Array che contiene i tentativi effettuati dall'utente
 
-var tentativiMassimi = 84; //Numero massimo di tentativi effettuabili dall'utente
+var tentativiMassimi = 6; //Numero massimo di tentativi effettuabili dall'utente
 // /FINE VARIABILI
 
 // Il computer deve generare 16 numeri casuali, quindi inserirli nell'array "bombe". Questi numeri non possono essere ripetuti
@@ -62,3 +62,6 @@ if(isInArray(sceltaUtente, bombe)){
     console.log(sceltaUtente, tentativi.length);
 }
 
+if(tentativiMassimi > bombe){
+    alert("Hai vinto");
+}
