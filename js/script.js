@@ -33,10 +33,19 @@ var tentativi = []; //Array che contiene i tentativi effettuati dall'utente
 
 var tentativiMassimi = 84; //Numero massimo di tentativi effettuabili dall'utente
 // /FINE VARIABILI
+var difficoltà = parseInt(prompt("Inserisci un livello di difficoltà compreso tra 0 e 2")); //Ad inizio gioco mi chiede la difficoltà che voglio impostare
 
 // Il computer deve generare 16 numeri casuali, quindi inserirli nell'array "bombe". Questi numeri non possono essere ripetuti
 while (bombe.length < 16){
-        var numeroCausale = getRandomNumber(1, 100);
+       if(difficoltà == 0){
+            var numeroCausale = getRandomNumber(1, 100);
+        }
+        if (difficoltà == 1){
+            var numeroCausale = getRandomNumber(1, 80);
+        }    
+        if (difficoltà == 2){
+            var numeroCausale = getRandomNumber(1, 50);
+        }
 
         if(!isInArray(numeroCausale, bombe)){
             bombe.push(numeroCausale);
@@ -46,7 +55,7 @@ while (bombe.length < 16){
 console.log("Bombe", bombe); //Log che mi mostra i numeri casuali assegnati come "bombe"
 
 // Logica del gioco
-var gameOver = false;
+var gameOver = false; //Variabile booleana di riferimento
 
 while (tentativi.length < tentativiMassimi && gameOver == false){
     do{
