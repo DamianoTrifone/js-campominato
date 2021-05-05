@@ -17,13 +17,12 @@ function getRandomNumber (min, max) {
   }
 
   function isInArray(element, array){
-      check = false
-      for(var i = 0; i < array.length; i++){
-      if(element == array [i]){
-        return !check;
-      }
-  }
-  return check;
+    for (var i = 0; i < array.length; i++){
+        if (element == array [i]){
+            return true;
+        }
+    }
+    return false;
 }
 // /FUNZIONI COMUNI
 
@@ -48,9 +47,16 @@ console.log("Bombe", bombe); //Log che mi mostra i numeri casuali assegnati come
 // Logica del gioco
 var gameOver = false;
 
+while (tentativi.length < tentativiMassimi && gameOver == false){
 do{
     sceltaUtente = parseInt(prompt("Inserisci un numero compreso tra 1 e 100"));
-} while (sceltaUtente < 1 || sceltaUtente > 100 || isNaN(sceltaUtente)){
-    tentativi.push(sceltaUtente)
+} while (sceltaUtente < 1 || sceltaUtente > 100 || isNaN(sceltaUtente))
+
+
+if(isInArray(sceltaUtente, bombe)){
+    gameOver = true;
+} else if(!isInArray(sceltaUtente, tentativi)){
+    tentativi.push(sceltaUtente);
 }
-console.log("Valore utente", tentativi);
+    console.log(sceltaUtente, tentativi.length);
+}
