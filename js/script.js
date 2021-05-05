@@ -29,10 +29,10 @@ function getRandomNumber (min, max) {
 
 // VARIABILI
 var bombe = []; //Array che contiene i numeri corrispondenti alle bombe
-console.log("Bombe", bombe);
+
 var tentativi = []; //Array che contiene i tentativi effettuati dall'utente
 
-var tentativiMassimi = 84; //Numero massimo di tentativi effettuabili dall'utente
+var tentativiMassimi = 6; //Numero massimo di tentativi effettuabili dall'utente
 // /FINE VARIABILI
 
 // Il computer deve generare 16 numeri casuali, quindi inserirli nell'array "bombe". Questi numeri non possono essere ripetuti
@@ -43,3 +43,14 @@ for(var i = 0; i < 17; i++){
         bombe.push(numeroCausale)
     }
 }
+console.log("Bombe", bombe); //Log che mi mostra i numeri casuali assegnati come "bombe"
+
+// Logica del gioco
+var gameOver = false;
+
+do{
+    sceltaUtente = parseInt(prompt("Inserisci un numero compreso tra 1 e 100"));
+} while (sceltaUtente < 1 || sceltaUtente > 100 || isNaN(sceltaUtente)){
+    tentativi.push(sceltaUtente)
+}
+console.log("Valore utente", tentativi);
