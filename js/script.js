@@ -31,37 +31,38 @@ var bombe = []; //Array che contiene i numeri corrispondenti alle bombe
 
 var tentativi = []; //Array che contiene i tentativi effettuati dall'utente
 
-var tentativiMassimi = 6; //Numero massimo di tentativi effettuabili dall'utente
+var tentativiMassimi = 84; //Numero massimo di tentativi effettuabili dall'utente
 // /FINE VARIABILI
 
 // Il computer deve generare 16 numeri casuali, quindi inserirli nell'array "bombe". Questi numeri non possono essere ripetuti
-for(var i = 0; i < 17; i++){
-    var numeroCausale = getRandomNumber(1, 100);
+while (bombe.length < 16){
+        var numeroCausale = getRandomNumber(1, 100);
 
-    if(!isInArray(numeroCausale, bombe)){
-        bombe.push(numeroCausale)
-    }
+        if(!isInArray(numeroCausale, bombe)){
+            bombe.push(numeroCausale);
+        }
 }
+
 console.log("Bombe", bombe); //Log che mi mostra i numeri casuali assegnati come "bombe"
 
 // Logica del gioco
 var gameOver = false;
 
 while (tentativi.length < tentativiMassimi && gameOver == false){
-do{
-    sceltaUtente = parseInt(prompt("Inserisci un numero compreso tra 1 e 100"));
-} while (sceltaUtente < 1 || sceltaUtente > 100 || isNaN(sceltaUtente))
+    do{
+        sceltaUtente = parseInt(prompt("Inserisci un numero compreso tra 1 e 100"));
+    } while (sceltaUtente < 1 || sceltaUtente > 100 || isNaN(sceltaUtente))
 
+    if(isInArray(sceltaUtente, bombe)){
+        gameOver = true;
+        alert("BOOM! Mi dispiace, hai preso la bomba. Il tuo punteggio è " + tentativi.length)
+    } else if(!isInArray(sceltaUtente, tentativi)){
+        tentativi.push(sceltaUtente);
+    }
 
-if(isInArray(sceltaUtente, bombe)){
-    gameOver = true;
-    alert("BOOM, hai preso la bomba! Il tuo punteggio è " + tentativi.length);
-} else if(!isInArray(sceltaUtente, tentativi)){
-    tentativi.push(sceltaUtente);
-}
     console.log(sceltaUtente, tentativi.length);
 }
 
-if(tentativiMassimi > bombe){
-    alert("Hai vinto");
+if (tentativi.length == tentativiMassimi){
+    alert("COMPLIMENTI! Non hai colpito nessuna bomba, hai vinto!")
 }
