@@ -12,13 +12,13 @@
 // con difficoltà 2 => tra 1 e 50
 
 // FUNZIONI COMUNI
-function getRandomArbitrary(min, max) {
-    return Math.random() * (max - min) + min;
+function getRandomNumber (min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
   function isInArray(element, array){
+      check = false
       for(var i = 0; i < array.length; i++){
-      check == false
       if(element == array [i]){
         return !check;
       }
@@ -29,9 +29,17 @@ function getRandomArbitrary(min, max) {
 
 // VARIABILI
 var bombe = []; //Array che contiene i numeri corrispondenti alle bombe
-
+console.log("Bombe", bombe);
 var tentativi = []; //Array che contiene i tentativi effettuati dall'utente
 
 var tentativiMassimi = 84; //Numero massimo di tentativi effettuabili dall'utente
 // /FINE VARIABILI
 
+// Il computer deve generare 16 numeri casuali, quindi inserirli nell'array "bombe". Questi numeri non possono essere ripetuti
+for(var i = 0; i < 17; i++){
+    var numeroCausale = getRandomNumber(1, 100);
+
+    if(!isInArray(numeroCausale, bombe)){
+        bombe.push(numeroCausale)
+    }
+}
